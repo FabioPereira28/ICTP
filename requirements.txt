@@ -2,3 +2,4 @@ streamlit
 tensorflow==2.18.0
 Pillow
 numpy
+h5py
