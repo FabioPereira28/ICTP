@@ -2,4 +2,4 @@ streamlit
 tensorflow==2.18.0
 Pillow
 numpy
-h5py==3.10.0  # Para garantir compatibilidade com modelos H5 antigos
+h5py
