@@ -7,7 +7,7 @@ from PIL import Image
 @st.cache_resource
 def load_model():
     try:
-        return tf.keras.models.load_model("modeloFinal.h5")
+        return tf.keras.models.load_model("modeloFinal.h5", compile=False)
     except Exception as e:
         st.error(f"Erro ao carregar o modelo: {e}")
         return None
