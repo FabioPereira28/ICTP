@@ -4,8 +4,19 @@ import numpy as np
 from PIL import Image
 
 # Carregar o modelo
+@st.cache_resource
+def load_model():
+    try:
+        return tf.keras.models.load_model("modeloFinal.h5")
+    except Exception as e:
+        st.error(f"Erro ao carregar o modelo: {e}")
+        return None
 
-model = tf.keras.models.load_model("modeloFinal.h5")
+model = load_model()
+
+# Verificar se o modelo foi carregado
+if model is None:
+    st.stop()
 
 # Classes das raças (atualiza para os teus rótulos)
 CLASSES = ["Raça 1", "Raça 2", "Raça 3", "Raça 4", "Raça 5", "Raça 6", "Raça 7", "Raça 8", "Raça 9", "Raça 10"]
