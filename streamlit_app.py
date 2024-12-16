@@ -1,21 +1,13 @@
 import streamlit as st
 import tensorflow as tf
-from tensorflow.keras.models import model_from_json
 import numpy as np
 from PIL import Image
-import h5py
 
 @st.cache_resource
 def load_model():
     try:
-        # Abrir o modelo H5 manualmente e editar o JSON
-        with h5py.File("modeloFinal.h5", "r") as f:
-            model_config = f["model_config"][()]
-            model_config = model_config.decode("utf-8").replace('"groups": 1,', "")  # Remove o parâmetro 'groups'
-            model = model_from_json(model_config)
-            model.load_weights(f["model_weights"])
-
-        return model
+        # Carregar o modelo diretamente com compile=False
+        return tf.keras.models.load_model("modeloFinal.h5", compile=False)
     except Exception as e:
         st.error(f"Erro ao carregar o modelo: {e}")
         return None
