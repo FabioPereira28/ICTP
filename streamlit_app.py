@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 
 # Carregar o modelo
-MODEL_PATH = "modeloFinal.h5"  # Nome do modelo no mesmo repositório
+
 model = tf.keras.models.load_model("modeloFinal.h5")
 
 # Classes das raças (atualiza para os teus rótulos)
