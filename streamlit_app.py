@@ -30,7 +30,7 @@ if model is None:
     st.stop()
 
 # Classes das raças (substituir pelos teus rótulos reais)
-CLASSES = ["Raça 1", "Raça 2", "Raça 3", "Raça 4", "Raça 5", "Raça 6", "Raça 7", "Raça 8", "Raça 9", "Raça 10"]
+CLASSES = ["American Staffordshire Terrier", "Boxer", "Chihuahua", "Doberman", "Labrador", "Pastor Alemao", "Pinscher", "Rotweiller", "Saint Bernard", "Yorkshire Terrier"]
 
 # Função para pré-processar a imagem
 def preprocess_image(image):
