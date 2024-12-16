@@ -4,10 +4,18 @@ import numpy as np
 from PIL import Image
 
 # Carregar o modelo
+from tensorflow.keras.layers import DepthwiseConv2D
+import tensorflow as tf
+import streamlit as st
+
 @st.cache_resource
 def load_model():
     try:
-        return tf.keras.models.load_model("modeloFinal.h5", compile=False)
+        # Mapeia o DepthwiseConv2D com argumentos personalizados
+        custom_objects = {
+            "DepthwiseConv2D": DepthwiseConv2D
+        }
+        return tf.keras.models.load_model("modeloFinal.h5", custom_objects=custom_objects, compile=False)
     except Exception as e:
         st.error(f"Erro ao carregar o modelo: {e}")
         return None
