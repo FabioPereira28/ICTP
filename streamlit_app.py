@@ -5,7 +5,7 @@ from PIL import Image
 
 # Carregar o modelo
 MODEL_PATH = "modeloFinal.h5"  # Nome do modelo no mesmo repositório
-model = tf.keras.models.load_model(MODEL_PATH)
+model = tf.keras.models.load_model("modeloFinal.h5")
 
 # Classes das raças (atualiza para os teus rótulos)
 CLASSES = ["Raça 1", "Raça 2", "Raça 3", "Raça 4", "Raça 5", "Raça 6", "Raça 7", "Raça 8", "Raça 9", "Raça 10"]
