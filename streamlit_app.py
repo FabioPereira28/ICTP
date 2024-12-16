@@ -1,17 +1,28 @@
 import streamlit as st
 import tensorflow as tf
 import numpy as np
+from tensorflow.keras.layers import DepthwiseConv2D
 from PIL import Image
 
+# Definir uma camada personalizada que ignora o argumento 'groups'
+class CustomDepthwiseConv2D(DepthwiseConv2D):
+    def __init__(self, **kwargs):
+        if 'groups' in kwargs:
+            kwargs.pop('groups')  # Remove o argumento 'groups'
+        super().__init__(**kwargs)
+
+# Função para carregar o modelo
 @st.cache_resource
 def load_model():
     try:
-        # Carregar o modelo diretamente com compile=False
-        return tf.keras.models.load_model("modeloFinal.h5", compile=False)
+        # Substituir DepthwiseConv2D pela versão customizada
+        custom_objects = {"DepthwiseConv2D": CustomDepthwiseConv2D}
+        return tf.keras.models.load_model("modeloFinal.h5", custom_objects=custom_objects, compile=False)
     except Exception as e:
         st.error(f"Erro ao carregar o modelo: {e}")
         return None
 
+# Carregar o modelo treinado
 model = load_model()
 
 # Verificar se o modelo foi carregado
