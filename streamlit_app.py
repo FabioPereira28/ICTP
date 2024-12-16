@@ -29,7 +29,7 @@ model = load_model()
 if model is None:
     st.stop()
 
-# Classes das raças (substituir pelos teus rótulos reais)
+# Classes das raças 
 CLASSES = ["American Staffordshire Terrier", "Boxer", "Chihuahua", "Doberman", "Labrador", "Pastor Alemao", "Pinscher", "Rotweiller", "Saint Bernard", "Yorkshire Terrier"]
 
 # Função para pré-processar a imagem
